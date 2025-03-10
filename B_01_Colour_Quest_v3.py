@@ -353,7 +353,7 @@ class Play:
 
         if score >= target:
             result_text = f"Success! {colour_name} earned you {score} points"
-            result_bg = "#828366"
+            result_bg = "#82B366"
             self.all_scores_list.append(score)
 
             rounds_won = self.rounds_won.get()
@@ -381,7 +381,7 @@ class Play:
         # code for when the game ends!
         if rounds_played == rounds_wanted:
             # work out success rate
-            success_rate = rounds_won / rounds_played + 100
+            success_rate = rounds_won / rounds_played * 100
             success_string = (f"Success Rate: "
                               f"{rounds_won} / {rounds_played} "
                               f"({success_rate:.0f}%)")
@@ -389,7 +389,7 @@ class Play:
             # Configure 'end game' labels / buttons
             self.heading_label.config(text="Game Over")
             self.target_label.config(text=success_string)
-            self.choose_label.config(text="Please click the stats"
+            self.choose_label.config(text="Please click the stats "
                                           "button for more info.")
             self.next_button.config(state=DISABLED, text="Game over")
             self.stats_button.config(bg="#990000")
@@ -540,7 +540,7 @@ class DisplayStats:
         success_string = (f"Success Rate: {rounds_won} / {rounds_played}"
                           f" ({success_rate:.0f}%)")
         total_score_string = f"Total score {total_score}"
-        max_possible_string = f"Maximum Possible ScoreL {max_possible}"
+        max_possible_string = f"Maximum Possible Score {max_possible}"
         best_score_string = f"Best Score: {best_score}"
 
         # custom comment text and formatting
@@ -550,7 +550,7 @@ class DisplayStats:
             comment_colour = "#D5E8D4"
         elif total_score == 0:
             comment_string = ("Oops - You've lost every round! "
-                              "You might want ti look at the hints!")
+                              "You might want to look at the hints!")
             comment_colour = "#F8CECC"
             best_score_string = f"Best score: n/a"
         else:
